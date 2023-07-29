@@ -6,6 +6,7 @@ import morgan from "morgan";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import connectDB from "./config/db.js";
 import { Server } from "socket.io";
+import cors from 'cors'
 
 import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
@@ -78,7 +79,13 @@ async function getMostRecentMessages() {
   return await message.getAllMessages();
 }
 
-// Mount routes to respective imports
+app.use(
+  cors({
+      origin: "*", // switch to client[s] origin
+      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+      preflightContinue: false,
+  })
+);
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);

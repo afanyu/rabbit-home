@@ -41,7 +41,12 @@ const Header = () => {
               {/* Cart */}
               <LinkContainer to="/cart">
                 <Nav.Link>
-                  <i className="fas fa-shopping-cart"></i> Requests
+                  <i className="fas fa-lightbulb"></i> Requests
+                </Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/room">
+                <Nav.Link>
+                <i className="fas fa-comment"></i> Messages
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (
